@@ -1,0 +1,20 @@
+
+LSTN uses the node implementation of rdio-simple (https://github.com/rdio/rdio-simple) 
+for oauth authentication and API calls.
+
+Requirements
+node.js
+npm
+strata.js (formerly link.js)
+( just `npm install strata` will get you there once you have node and npm )
+
+Also for the OAUTH to work properly, you'll need an RDIO API key.
+Sign up for one at http://developer.rdio.com. Creat an application and put
+the key and secret in the file `rdio_consumer_credentials_EXAMPLE.js` and save it
+as `rdio_consumer_credentials.js`
+
+
+Once you have that, `cd` into the `node` dir and run `node app.js`.
+
+Then go to http://localhost:1982 to see the app.
+

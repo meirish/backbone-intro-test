@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>LSTN</title>
+<style>
+  #player{ position: absolute; right:-400px;}
+  .search-suggest{ width: 400px; 
+    background: white; 
+    position: absolute; top: 100px;}
+  #page .rdio-obj{ 
+    display: inline-block; 
+    vertical-align: middle; 
+    padding: .5em;
+    margin: .5em;
+  }
+</style>
+</head>
+<body>
+  <h1><a href="#">LSTN</a></h1> 
+<% if (user.lastSongPlayed) { %>
+<a href="/logout">Log out of Rdio</a>
+<p>Logged in as <%= user.firstName %></p>
+<% } else { %>
+<a href="/login">Sign in with Rdio</a>
+<% } %>
+
+<input type="search" name="some_name" id="search" value="Find Some Music" />
+<section id="page">
+<% if (user.lastSongPlayed) { %>
+<h1>What's playing in your network</h1>
+<% } else { %>
+<h1>Hear what's playing on Rdio</h1>
+<% } %>
+
+</section>
+<div id="player">
+  <div id="rdioSwf"></div>
+  <section class="track">
+  <% if (user.lastSongPlayed) { %>
+  <img src="<%= user.lastSongPlayed.icon %>"/>
+  <h1><%= user.lastSongPlayed.name %></h1>
+  <h2><%= user.lastSongPlayed.album %></h2>
+  <h3><%= user.lastSongPlayed.artist %></h3>
+  <% } %>
+  </section>
+  <button class="play play-pause">Play</button>
+  <button class="prev">Previous</button>
+  <button class="next">Next</button>
+</div>
+
+<script id="player-details" type="text/template">
+  <section class="track">
+  <img src="{{ icon }}"/>
+  <h1>{{ name }}</h1>
+  <h2>{{ album }}</h2>
+  <h3>{{ artist }}</h3>
+  </section>
+</script>
+<script id="rdio-obj" type="text/template">
+  {{#icon}}
+    <img src="{{ icon }}"/>
+  {{/icon}}
+  {{#firstName}}
+  {{firstName}} {{lastName}}
+  {{/firstName}}
+  {{#name}}
+    <h1>{{ name }}</h1>
+  {{/name}}
+  {{#album}}
+  <h2><a href="#albums/{{albumKey}}">{{ album }}</a></h2>
+  {{/album}}
+  {{#artist}}
+  <h3><a href="#artists/{{artistKey}}">{{ artist }}</a></h3>
+  {{/artist}}
+  {{#canPlay}}
+  <button class="play">PLAY ME</button>
+  {{/canPlay}}
+</script>
+<script id="search-suggest" type="text/template">
+  <a href="#" class="go-to-search">See all search results</a>
+</script>
+<script id="search-result" type="text/template">
+  <a href="{{permalink}}">
+  {{#firstName}}
+  {{firstName}} {{lastName}}
+  {{/firstName}}
+
+  {{#name}}
+    <span class="name">{{ name }}</span>
+  {{/name}}
+  {{#album}}
+  <span class="album">{{ album }}</span>
+  {{/album}}
+  {{#artist}}
+  <span class="artist">{{ artist }}</span>
+  {{/artist}}
+</a>
+</script>
+<script id="obj-detail" type="text/template">
+  {{#icon}}
+    <img src="{{ icon }}"/>
+  {{/icon}}
+  {{#firstName}}
+  {{firstName}} {{lastName}}
+  {{/firstName}}
+  {{#name}}
+    <h1>{{ name }}</h1>
+  {{/name}}
+  {{#album}}
+  <h2><a href="#albums/{{albumKey}}">{{ album }}</a></h2>
+  {{/album}}
+  {{#artist}}
+  <h3><a href="#artists/{{artistKey}}">{{ artist }}</a></h3>
+  {{/artist}}
+  {{#canPlay}}
+  <button class="play" data-key="{{key}}">PLAY ME</button>
+  {{/canPlay}}
+  {{#hasRadio}}
+    <button class="play" data-key="{{radioKey}}">
+      Play station
+    </button
+  {{/hasRadio}}
+</script>
+
+
+<script src="/js/vendor/jquery-min.js"></script>
+<script src="/js/vendor/swfobject.js"></script>
+<script src="/js/vendor/mustache.js"></script>
+<script src="/js/vendor/underscore.js"></script>
+<script src="/js/vendor/backbone.js"></script>
+<script src="/js/app/setup.js"></script>
+<script src="/js/app/player.js"></script>
+<script src="/js/app/rdio.js"></script>
+<script src="/js/app/search.js"></script>
+<script>
+  Lstn.bootstrap = <%= heavyRotation %>
+$(function(){
+  <% if (user.lastSongPlayed) { %>
+    Lstn.init({ lastPlayed: '<%= user.lastSongPlayed.key %>' });
+    <% } else { %>
+    Lstn.init();
+    <% } %>
+});
+</script>
+
+
+</body>
+</html>
