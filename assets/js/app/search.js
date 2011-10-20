@@ -40,6 +40,9 @@ Lstn.Views.SearchView = Backbone.View.extend({
   refreshResults: function(){
     if (this.results){
       this.results.trigger('reset');
+      if( $(this.results.el).is(':hidden') ){
+        this.results.trigger('show');
+      }
     } else {
       this.results = new Lstn.Views.SearchSuggestView;
       this.results.trigger('render');
