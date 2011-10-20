@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <title>Intro to Backbone.js</title>
+
+  <link rel="stylesheet" href="./css/reset.css" type="text/css"/>
+  <link rel="stylesheet" href="./css/showoff.css" type="text/css"/>
+
+  <script type="text/javascript" src="./js/jquery-1.4.2.min.js"></script>
+  <script type="text/javascript" src="./js/jquery.cycle.all.js"></script>
+	<script type="text/javascript" src="./js/jquery-print.js"></script>
+  <script type="text/javascript" src="./js/jquery.batchImageLoad.js"></script>
+
+  <script type="text/javascript" src="./js/jquery.doubletap-0.1.js"></script>
+
+  <script type="text/javascript" src="./js/fg.menu.js"></script>
+  <script type="text/javascript" src="./js/showoff.js"></script>
+  <script type="text/javascript" src="./js/jTypeWriter.js"> </script>
+  <script type="text/javascript" src="./js/sh_main.min.js"></script>
+  <script type="text/javascript" src="./js/core.js"></script>
+  <script type="text/javascript" src="./js/showoffcore.js"></script>
+
+  <link type="text/css" href="./css/fg.menu.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/theme/ui.all.css" media="screen" rel="stylesheet" />
+  <link type="text/css" href="./css/sh_style.css" rel="stylesheet" >
+
+  
+    <link rel="stylesheet" href="file/slides.css" type="text/css"/>
+  
+
+  
+
+  <script type="text/javascript">
+  $(function(){
+    setupPreso(false, './');
+  });
+  </script>
+</head>
+
+<body>
+
+
+<a tabindex="0" href="#search-engines" class="fg-button fg-button-icon-right ui-widget ui-state-default ui-corner-all" id="navmenu"><span class="ui-icon ui-icon-triangle-1-s"></span>slides</a>
+<div id="navigation" class="hidden"></div>
+
+<div id="help">
+  <table>
+    <tr><td class="key">space, &rarr;</td><td>next slide</td></tr>
+    <tr><td class="key">&larr;</td><td>previous slide</td></tr>
+    <tr><td class="key">d</td><td>debug mode</td></tr>
+    <tr><td class="key">## &lt;ret&gt;</td><td>go to slide #</td></tr>
+    <tr><td class="key">c</td><td>table of contents (vi)</td></tr>
+    <tr><td class="key">f</td><td>toggle footer</td></tr>
+    <tr><td class="key">r</td><td>reload slides</td></tr>
+    <tr><td class="key">z</td><td>toggle help (this)</td></tr>
+  </table>
+</div>
+
+<div class="buttonNav">
+  <input type="submit" onClick="prevStep();" value="prev"/>
+  <input type="submit" onClick="nextStep();" value="next"/>
+</div>
+
+<div id="preso">loading presentation...</div>
+<div id="footer">
+  <span id="slideInfo"></span>
+  <span id="debugInfo"></span>
+  <span id="notesInfo"></span>
+</div>
+
+<div id="slides" class="offscreen" style="display:none;">
+<div class="slide" data-transition="none"><div class="content" ref="overview/slides/1">
+<h1>Intro to backbone.js</h1>
+
+<h2>Matthew Irish</h2>
+
+<h4>UpFront KC - 10/20/11</h4></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="overview/slides/2">
+<h1>A bit 'bout me</h1>
+
+<ul>
+<li>I work at Garmin as a UX Developer and <a href="http://designiseasy.com">design is easy</a></li>
+<li>My primary project for the last year was a Big App&#x2122;, that uses Backbone a
+lot</li>
+<li>There have also been a few other Backbone apps along the way</li>
+<li>I do some design (not showcased here today sadly, I ran out of time)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="overview/slides/3">
+<h1>My experience with Backbone.js</h1>
+
+<ul>
+<li>Use it at Garmin in a handful of apps &amp; on a personal project w/ Zepto &amp; Coffeescript</li>
+<li>The Garmin apps use it in a 'read-only' fashion because the apps consume JSON via JSONP</li>
+<li>Backbone.js has no support for JSONP built-in (this is Good Thing&#x2122;)</li>
+<li>Unfortunately means I don't have first-hand experience with everything
+I'll talk about</li>
+<li>BUT</li>
+<li>I'll do my best to give you the whole picture</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/1">
+<h1>What is Backbone.js?</h1>
+
+<ul>
+<li>Client-side MVC (loosely)</li>
+<li>Small and lightweight</li>
+<li>Powerful custom events framework</li>
+<li>Meant for use with REST backend</li>
+<li>Well-documented</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/2">
+<h1>Why Backbone.js?</h1>
+
+<ul>
+<li>Gives structure to a js codebase</li>
+<li>The eventing is awesome</li>
+<li>It's lightweight in comparison to others (knockout.js,
+SproutCore, JavaScriptMVC)*</li>
+<li>*cheating a bit - this doesn't include the dependencies</li>
+<li>Dependencies are flexible and loosely coupled</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/3">
+<h1>What is Backbone good for?</h1>
+
+<ul>
+<li>Building one-page applications</li>
+<li>Rich interactions <a href="https://github.com/documentcloud/visualsearch">https://github.com/documentcloud/visualsearch</a></li>
+<li>Smartphone web apps</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/4">
+<h1>Where have I seen Backbone used?</h1>
+
+<ul>
+<li>LinkedIn mobile</li>
+<li>New HTML5 Pandora</li>
+<li>Soundcloud mobile</li>
+<li>Rdio</li>
+<li/>
+<li>more at <a href="http://documentcloud.github.com/backbone/#examples">http://documentcloud.github.com/backbone/#examples</a></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/5">
+<h1>What you'll need to get started</h1>
+
+<ul>
+<li><a href="http://documentcloud.github.com/underscore/">underscore.js</a></li>
+<li>library for DOM &amp; ajax - (<a href="http://jquery.com/">jQuery</a> || <a href="http://zeptojs.com">Zepto</a> || <a href="http://ender.no.de">Ender</a>)</li>
+<li>templating lib of your choice (can use underscore's)</li>
+<li><a href="https://github.com/douglascrockford/JSON-js">json2.js</a> for older browsers</li>
+<li><a href="http://jashkenas.github.com/coffee-script/">CoffeeScript</a> if you want</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/6">
+<h1>The example App - LSTN</h1>
+
+<h2>An Rdio client</h2>
+
+<h2><a href="https://github.com/meirish/lstn">Get it here</a> (requires Node.js)</h2></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/7">
+<h1>Models</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/8">
+<h1>A Backbone Model</h1>
+
+<ul>
+<li>Model and Collections of Models</li>
+<li>Model your data on the front-end</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/9">
+<h1>A Backbone Model</h1>
+
+<pre class="sh_javascript"><code>var RdioObj = Backbone.Model.extend({
+  ... 
+
+  initialize: function(options){
+    // anything here is run during in the 
+    // constructor which gets passed the same args 
+  },
+  ...
+
+});
+
+var Album = new RdioObj;</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/10">
+<h1>A Model's got attrs</h1>
+
+<ul>
+<li>Model attributes are stored in <code>model.attributes</code>, <em>should</em> be
+accessed with <code>get()</code> and <code>set()</code></li>
+<li>Adding a model to a <code>Collection</code> will result in a <code>collection</code> attribute on model instances</li>
+<li>You can set <code>defaults</code> on a model class for attributes you want all models to have</li>
+<li><code>model.id</code> (if passed on instantiation) and <code>model.cid</code> set on the model itself</li>
+<li><code>set()</code> fires a <code>'change:[attr]'</code> event</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/11">
+<h1>Fetch 'em, save 'em, destroy 'em</h1>
+
+<h2>model methods</h2>
+
+<ul>
+<li>If a model is registered with a collection that has a <code>url</code>, <code>Backbone.sync</code> keeps front end models in sync with your database. <em>(also can work with local storage)</em></li>
+<li><code>fetch()</code> sends <code>GET</code>, overwrites attrs from the server</li>
+<li><code>save()</code> sends <code>POST</code> if has no id, <code>PUT</code> if it does</li>
+<li><code>destroy()</code> sends <code>DELETE</code></li>
+<li>All of these accept <code>success</code> and <code>error</code> callbacks</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/12">
+<h1>Create, Save, Get</h1>
+
+<pre class="sh_javascript"><code>
+var playlist = new RdioObj();
+
+playlist.set({ 
+  name:'UpFront Tunes', 
+  keys:'t9858938,t9858996,t9859029'
+});
+// OR PASS IN JSON //
+playlist = new RdioObj({
+                name:'UpFront Tunes',
+                keys:'t9858938,t9858996,t9859029'
+            });
+
+playlist.save()  // POST to server
+
+playlist.get('name')  =&gt; 'UpFront Tunes'</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/13">
+<h1>Validate on <code>set()</code> and <code>save()</code></h1>
+
+<ul>
+<li>If defined, <code>validate()</code> will be called when <code>set()</code> or <code>save()</code> is called</li>
+<li><code>validate()</code> is passed the attrs that are going to change</li>
+<li>Only return a value from <code>validate()</code> on errors</li>
+<li>Triggers an <code>error</code> event if <code>validate()</code> returns a value</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/14">
+<pre class="sh_javascript"><code>...
+validate: function (attrs) {
+  if (!attrs.keys || attrs.keys.split(',').length &lt; 2 ){
+    return 'A playlist must have at least two tracks';
+  }
+}
+...
+
+playlist.set({ 
+      name:'UpFront Again'
+    }, 
+    { 
+      error: function(err){ 
+              console.log(error);
+            }
+    }
+);
+=&gt; 'A playlist must have at least two tracks';</code></pre></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/15">
+<h1>Collections</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/16">
+<h1>Backbone Collections</h1>
+
+<ul>
+<li>A <em>collection</em> of models!</li>
+<li>Reload models with <code>collection.reset([models])</code> (fires a "reset" event) - both used to be <code>refresh</code> in older version of Backbone</li>
+<li>if <code>model</code> attr is defined you can pass it raw objects and it will create model instances</li>
+<li><code>[models]</code> can be array of either raw objects (from JSON) or model instances</li>
+<li>Add/remove instances with <code>add(model)</code> and <code>remove(model)</code> (fire "add" and "remove" events respectively)</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/17">
+<pre class="sh_javascript"><code>
+var HeavyRotation = Backbone.Collection.extend({
+    model: RdioObj,
+    initialize: function(models, options){},
+    comparator: function(){}
+
+});
+
+var networkHR = new HeavyRotation;
+
+networkHR.add({name: 'Gardens &amp; Villa', key: 'a838952'});
+
+networkHR.length;
+=&gt; 1</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/18">
+<h1>Collection methods</h1>
+
+<ul>
+<li><code>collection.get(id)</code> retrieves model by id</li>
+<li><code>collection.at(id)</code> retrieves model by index</li>
+<li><code>collection.forEach(function (thing) { ... })</code></li>
+<li>many other Underscore methods are proxied on Backbone.Collection</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/19">
+<h1>Views</h1></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/20">
+<h1>Like an MVC view, except...not really</h1>
+
+<ul>
+<li>Backbone views are not templates</li>
+<li>Backbone views are not controllers</li>
+<li>Part event broker, part template renderer</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/21">
+<pre class="sh_javascript"><code>var RdioObjView = Backbone.View.extend({
+    className: 'rdio-obj',
+    template: $('#rdio-obj').html(),
+    initialize: function(options){
+      this.model.bind('change:name', this.render, this);
+      this.render();
+    },
+    render: function(){
+      var context = this.model.toJSON();
+      context.canPlay = this.model.canPlay();
+      $(this.el).html(  
+          Mustache.to_html(this.template, context);
+      );
+      return this;
+    },
+...
+});</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/22">
+<h1>A view into the view</h1>
+
+<h2>What's happening?</h2>
+
+<ul>
+<li>View generates wrapper element 'div' // can change to another element by defining <code>tagName</code></li>
+<li>In initialize, ensure the view's <code>refresh()</code> method of view is called whenever the <code>name</code> attr changes</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/23">
+<h1>Other view attrs</h1>
+
+<ul>
+<li><code>el</code>: if defined (and a valid DOM element), it will be used as the wrapper</li>
+<li><code>el</code> can be an element already in the DOM - a cool way to wire up a bunch of events</li>
+<li><code>id</code>: set id attribute on wrapper element</li>
+<li><code>className</code>: set class attribute on wrapper element</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/24">
+<h1><code>_.bindAll()</code> and <code>bind()</code></h1>
+
+<ul>
+<li>JavaScript is delegation-based</li>
+<li>Backbone knows about <code>initialize</code> and sets context (i.e. <code>this</code>) correctly</li>
+<li>Use <code>_.bindAll(this, "method names"...)</code> to ensure that <code>this</code> references view when those methods are called</li>
+<li>in Backbone 0.5 you can pass in context when using <code>bind()</code>: <code>this.model.bind('destroy', this.remove, this);</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/25">
+<h1>Delegation and events</h1>
+
+<ul>
+<li>Views can declare an <code>events</code> property that is an object with key/value pairs in the format <code>"[DOM event name] [optional css selector]": "view method name"</code></li>
+<li>Selectors are bounded by the context of the view - event delegation is then used to capture events</li>
+<li>Methods have access to <code>this.$</code>, jQuery/Zepto/ender bound to wrapper as top-level element</li>
+<li><code>return false;</code> doesn't work; requires explicit event parameter and <code>e.preventDefault()</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/26">
+<h1>View events example</h1>
+
+<pre class="sh_javascript"><code>
+var SearchSuggestView = Backbone.View.extend({
+    ...
+    events: {
+      'click a.go-to-search':'goToSearch',
+      'click a':'hide'
+    },
+    goToSearch: function(e){
+      // doesn't follow the href of the a tag
+      e.preventDefault(); 
+      Lstn.router.navigate('search/'+ $('#search').val(), true);
+    },
+    hide: function(){
+      $(this.el).fadeOut('fast', function(){ $(this).empty(); });
+    }, 
+...
+});</code></pre></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/27">
+<h1>Routers</h1></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/28">
+<h1>Backbone Routers</h1>
+
+<h2>(formerly Controllers)</h2>
+
+<h3>(formerly just Views)</h3>
+
+<ul>
+<li>Provides deep-linking through URL-fragments (hashes)</li>
+<li>Can opt-in to HTML5 pushState</li>
+<li>When all of your routers have been created call  <code>Backbone.history.start()</code> or <code>Backbone.history.start({pushState:true})</code></li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/29">
+<pre class="sh_javascript"><code>
+var RdioRouter = Backbone.Router.extend({
+
+  routes:{
+    '':'index',
+    'albums/:id':'detailView',
+    'artists/:id':'detailView',
+    'playlists/:id':'detailView',
+    'search/:query':'search'
+  },
+
+  detailView: function(id){}, 
+
+  search: function(query){} 
+
+});
+var router = new RdioRouter;
+Backbone.history.start();</code></pre></div>
+</div><div class="slide" data-transition="none"><div class="content bullets incremental" ref="backbone/slides/30">
+<h1>Router Methods</h1>
+
+<ul>
+<li><code>navigate()</code> allows you to programmatically go do different url fragments</li>
+<li>takes a second option <code>triggerRoute</code> - a boolean to determine if the corresponding route funciton should be called</li>
+<li>allows you to stay de-coupled from your markup</li>
+<li>also makes IE hash-friendly</li>
+<li><code>route()</code> lets you pass in routes to the router after init - can pass in regex for route string</li>
+</ul>
+</div>
+</div><div class="slide" data-transition="none"><div class="content" ref="backbone/slides/31">
+<pre class="sh_javascript"><code>// finishing up
+router.route('fin/', true);</code></pre></div>
+</div><div class="slide" data-transition="scrollUp"><div class="content bullets incremental" ref="backbone/slides/32">
+<h1>Thank you</h1>
+
+<h2>Any questions?</h2>
+
+<h1>------------</h1>
+
+<h4>Special thanks to Jonathan Lukens <a href="http://twitter.com/redneckbeard">@redneckbeard</a> on twitter;</h4>
+
+<h4>Follow me on twitter <a href="http://twitter.com/meirish">@meirish</a></h4></div>
+</div></div>
+
+</body>
+</html>

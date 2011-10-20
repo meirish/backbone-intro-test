@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'MesloLGSDZRegular';
+    src: url('./fonts/meslolgs-dz-regular-webfont.eot');
+    src: url('./fonts/meslolgs-dz-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/meslolgs-dz-regular-webfont.woff') format('woff'),
+         url('./fonts/meslolgs-dz-regular-webfont.ttf') format('truetype'),
+         url('./fonts/meslolgs-dz-regular-webfont.svg#MesloLGSDZRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'OstrichSansBlack';
+    src: url('./fonts/ostrich-black-webfont.eot');
+    src: url('./fonts/ostrich-black-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-black-webfont.woff') format('woff'),
+         url('./fonts/ostrich-black-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-black-webfont.svg#OstrichSansBlack') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OstrichSansBold';
+    src: url('./fonts/ostrich-bold-webfont.eot');
+    src: url('./fonts/ostrich-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-bold-webfont.woff') format('woff'),
+         url('./fonts/ostrich-bold-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-bold-webfont.svg#OstrichSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OstrichSansDashedMedium';
+    src: url('./fonts/ostrich-dashed-webfont.eot');
+    src: url('./fonts/ostrich-dashed-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-dashed-webfont.woff') format('woff'),
+         url('./fonts/ostrich-dashed-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-dashed-webfont.svg#OstrichSansDashedMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OstrichSansCondensedLight';
+    src: url('./fonts/ostrich-light-webfont.eot');
+    src: url('./fonts/ostrich-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-light-webfont.woff') format('woff'),
+         url('./fonts/ostrich-light-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-light-webfont.svg#OstrichSansCondensedLight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OstrichSansMedium';
+    src: url('./fonts/ostrich-regular-webfont.eot');
+    src: url('./fonts/ostrich-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-regular-webfont.woff') format('woff'),
+         url('./fonts/ostrich-regular-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-regular-webfont.svg#OstrichSansMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'OstrichSansRoundedMedium';
+    src: url('./fonts/ostrich-rounded-webfont.eot');
+    src: url('./fonts/ostrich-rounded-webfont.eot?#iefix') format('embedded-opentype'),
+         url('./fonts/ostrich-rounded-webfont.woff') format('woff'),
+         url('./fonts/ostrich-rounded-webfont.ttf') format('truetype'),
+         url('./fonts/ostrich-rounded-webfont.svg#OstrichSansRoundedMedium') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body{ font-family: 'Helvetica Neue Light', 'Helvetica Neue';
+  background: -webkit-linear-gradient(top, #45484d 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: 'OstrichSansBold';
+  margin: .25em 0 0 0;
+  text-align: center;
+}
+h2{
+  font-family: 'OstrichSansBlack';
+}
+div.bullets li {
+    text-align:left;
+    font-size:30px;
+    padding: 20px 30px;
+    line-height: 1.2;
+    list-style-type:disc;
+}
+
+p {
+    font-size:30px;
+    padding:1em 0 0 1em;
+}
+a{
+  color: #cb4b16;
+  padding: 2px 10px;
+  display: inline-block;
+-webkit-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); 
+   -moz-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); 
+    -ms-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); 
+     -o-transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955); 
+        transition: all 500ms cubic-bezier(0.455, 0.030, 0.515, 0.955);
+      }
+      
+a:hover{
+  color: white;
+  background: #cb4b16;
+  border-radius: 32px;
+}
+
+code, pre.sh_sourceCode span, pre.sh_sourceCode span * {
+    font-family: 'MesloLGSDZRegular';
+    font-size: 28px;
+}
+li code{ color: #2AA198; }
+pre code{color: #073642;}
+pre.sh_sourceCode .sh_keyword{ color: #b58900;}
+pre.sh_sourceCode .sh_function{color: #2aa198;}
+pre.sh_sourceCode .sh_symbol,pre.sh_sourceCode .sh_cbracket,
+pre.sh_sourceCode .sh_string{ color: #586e75; 
+    font-family: 'MesloLGSDZRegular';
+
+}
+pre.sh_sourceCode .sh_comment{ color: #93a1a1;}
