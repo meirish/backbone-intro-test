@@ -38,7 +38,7 @@ app.route("/", function (env, callback) {
       if (err && strata.handleError(err, env, callback)) {
         return;
       }
-      env.user = data.result;
+      session.user = data.result;
       heavyP.user = data.result.key;
       heavyP.friends = 'true';
       rdio.call('getHeavyRotation', heavyP, function(err, data){
@@ -47,7 +47,7 @@ app.route("/", function (env, callback) {
         }
 
         var template = fs.readFileSync("./templates/home.html", "utf8");
-        body = _.template(template, {user:env.user, heavyRotation: JSON.stringify(data.result) });
+        body = _.template(template, {user:session.user, heavyRotation: JSON.stringify(data.result) });
         callback(200, {}, body); 
       });
     });
@@ -171,17 +171,17 @@ app.route('/getPlaybackToken', function (env, callback) {
 
 
 app.route("/getHeavyRotation", function (env, callback) {
+  var session = env.session;
   var rdio = getRdio(env);
   var params = {
     type: 'albums',
-    limit: 15
+    limit: 20
   }
 
-  if (env.user){
-    params.user = env.user.key;
+  if (session.user){
+    params.user = session.user.key;
     params.friends = 'true';
   }
-  console.log(env, 'params: ', params);
   rdio.call("getHeavyRotation", params, function (err, data) {
     if (err && strata.handleError(err, env, callback)) {
       return;

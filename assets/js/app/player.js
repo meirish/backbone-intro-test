@@ -140,51 +140,6 @@ Lstn.Views.Player = Backbone.View.extend({
   playingTrackChanged: function( playingTrack, sourcePosition ){
     this.model.playingTrack = playingTrack;
     this.model.set({ playingTrack: playingTrack.key });
-  },
-
-  playingSourceChanged: function (playingSource) {},
-
-  volumeChanged : function (volume) {
-    // The volume changed to volume, a number between 0 and 1.
-  },
-
-  muteChanged : function (mute) {
-    // Mute was changed. mute will either be true (for muting enabled) or false (for muting disabled).
-  },
-
-  positionChanged : function (position) {
-    //The position within the track changed to position seconds.
-    // This happens both in response to a seek and during playback.
-    $('#position').text(position);
-  },
-
-  queueChanged : function (newQueue) {
-    // The queue has changed to newQueue.
-  },
-
-  shuffleChanged : function (shuffle) {
-    // The shuffle mode has changed.
-    // shuffle is a boolean, true for shuffle, false for normal playback order.
-  },
-
-  repeatChanged : function (repeatMode) {
-    // The repeat mode change.
-    // repeatMode will be one of: 0: no-repeat, 1: track-repeat or 2: whole-source-repeat.
-  },
-
-  playingSomewhereElse : function () {
-    // An Rdio user can only play from one location at a time.
-    // If playback begins somewhere else then playback will stop and this callback will be called.
-  },
-
-  updateFrequencyData : function (arrayAsString) {
-    // Called with frequency information after this.swf.rdio_startFrequencyAnalyzer(options) is called.
-    // arrayAsString is a list of comma separated floats.
-
-    var arr = arrayAsString.split(',');
-
-    $.each($('#freq div'), function(i) {
-      $(this).css({'height':arr[i]*200, 'left':i*6});
-    })
   }
+
 });

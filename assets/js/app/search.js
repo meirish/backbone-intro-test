@@ -19,10 +19,13 @@ Lstn.Views.SearchView = Backbone.View.extend({
   
   checkForEnter: function(e){
     // if enter is pressed, submit the `val()`
-    // to the search URL to get the results
+    // to the search URL to get the results and hide a results panel if it's there
     if (e.keyCode === 13){
       var query =  $(this.el).val();
       Lstn.router.navigate('search/'+ query, true);
+      if ( this.results ){
+        this.results.trigger('hide');
+      }
     }
   },
 
@@ -67,6 +70,7 @@ Lstn.Views.SearchSuggestView = Backbone.View.extend({
 
   events: {
     'click .go-to-search':'goToSearch',
+    'click a.close':'stopBubble',
     'click a':'hide'
   },
 
@@ -85,7 +89,7 @@ Lstn.Views.SearchSuggestView = Backbone.View.extend({
 
   reset: function(){
     var container = $(this.el).detach().empty();
-    container.append($('<a href="#" class="go-to-search">See all search results</a>'));
+    container.append($('<a href="#" class="close">Close</a><a href="#" class="go-to-search">See all search results</a>'));
     Lstn.searchresult.each(function(model){
       var view = new Lstn.Views.RdioObjView({ model: model, template:'#search-result' });
       container.append( $(view.el) );
@@ -99,7 +103,11 @@ Lstn.Views.SearchSuggestView = Backbone.View.extend({
     Lstn.router.navigate('search/'+ query, true);
   },
 
-  hide: function(){
+  stopBubble: function(e){
+    e.preventDefault();
+    this.hide();
+  },
+  hide: function(e){
     $(this.el).fadeOut('fast', function(){ $(this).empty(); });
   }, 
 
@@ -110,10 +118,6 @@ Lstn.Views.SearchSuggestView = Backbone.View.extend({
 
 });
 
-// subclass `Lstn.Views.SearcySuggestView` to override `template` and `render` 
-Lstn.Views.SearchResultsView = Lstn.Views.SearchSuggestView.extend({
-
-});
 
 Lstn.Collections.SearchCollection = Backbone.Collection.extend({
 
