@@ -1,12 +1,12 @@
 var path = require("path"),
     fs = require("fs"),
     strata = require("strata"),
-    Rdio = require("./../rdio"),
-    _ = require("./../assets/js/vendor/underscore"),
+    Rdio = require("./rdio"),
+    _ = require("./assets/js/vendor/underscore"),
     cred = require("./rdio_consumer_credentials");
 
 
-var root = path.resolve("./../assets");
+var root = path.resolve("./assets");
 var app = new strata.Builder;
 
 
