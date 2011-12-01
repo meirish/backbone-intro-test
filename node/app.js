@@ -263,10 +263,7 @@ app.route("/logout", function (env, callback) {
 }, "GET");
 
 app.use(strata.static, root);
-var server = strata.run(app, {}, function () {
-  var addr = server.address();
-  console.log("strata server started at %s:%s", addr.address, addr.port);
-});
+var server = strata.run(app, {port: process.env.PORT});
 
 function redirect(location, callback) {
   callback(302, {"Location": location}, 'Go to <a href="' + location + '">' + location + '</a>');
