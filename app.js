@@ -46,7 +46,7 @@ app.route("/", function (env, callback) {
          return;
         }
 
-        var template = fs.readFileSync("./../templates/home.html", "utf8");
+        var template = fs.readFileSync("./templates/home.html", "utf8");
         body = _.template(template, {user:env.user, heavyRotation: JSON.stringify(data.result) });
         callback(200, {}, body); 
       });
@@ -57,7 +57,7 @@ app.route("/", function (env, callback) {
          return;
         }
 
-        var template = fs.readFileSync("./../templates/home.html", "utf8");
+        var template = fs.readFileSync("./templates/home.html", "utf8");
         body = _.template(template, { user:{}, heavyRotation: JSON.stringify(data.result) });
         callback(200, {}, body); 
       });
