@@ -9,7 +9,6 @@ var path = require("path"),
 var root = path.resolve("./assets");
 var app = new strata.Builder;
 
-
 app.use(strata.commonLogger);
 app.use(strata.contentType);
 app.use(strata.contentLength);
